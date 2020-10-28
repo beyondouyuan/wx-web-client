@@ -1,0 +1,109 @@
+.publish-container {
+    width: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    background: url('./assets/images/resource_header.jpg') 0 0 no-repeat;
+    background-size: 100% 1.96rem;
+
+    .publish-wrapper {
+        width: 100%;
+        margin-top: 1.96rem;
+        padding-bottom: .2rem;
+        background-color: #0084ff;
+    }
+
+    .publish-content {
+        width: 3.38rem;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: .1rem;
+        padding: .06rem;
+        box-sizing: border-box;
+
+        .publish-main {
+            border: 1px solid #D4E8FF;
+            border-radius: .1rem;
+        }
+    }
+
+    .header {
+        padding: .2rem 0;
+        font-size: .20rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .publish-form {
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        padding-right: .1rem;
+        box-sizing: border-box;
+
+        .form-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: .1rem;
+
+            .label-item {
+                width: .6rem;
+                font-size: .12rem;
+                padding-left: .16rem;
+                box-sizing: border-box;
+            }
+
+            .input-item {
+                resize: none;
+                flex: 1;
+                height: .44rem;
+                line-height: .44rem;
+                border: 1px solid #EEEEEE;
+                border-radius: .04rem;
+                padding: .1rem;
+                box-sizing: border-box;
+                font-size: .12rem;
+
+                &::-webkit-input-placeholder {
+                    color: #C4C4C4;
+                }
+            }
+
+            .text-area {
+                flex: 1;
+                font-size: .14rem;
+                padding: .14rem;
+                box-sizing: border-box;
+                border: 0;
+                border-radius: .08rem;
+                background-color: rgba(241, 241, 241, .98);
+                &::-webkit-input-placeholder {
+                    color: #C4C4C4;
+                }
+            }
+            .upload-item {
+                flex: 1;
+            }
+        }
+    }
+
+    .submit-containner {
+        margin: .20rem auto;
+        width: 2rem;
+
+        .btn {
+            height: .44rem;
+            border-radius: .08rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .18rem;
+            color: white;
+            font-family: Alibaba PuHuiTi;
+            font-weight: bold;
+            background-color: #0084ff;
+        }
+    }
+}

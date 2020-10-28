@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icon_screening</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icon_screening" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g fill="#666666" fill-rule="nonzero" id="ic_screening">
+            <path d="M3.05094206,4.25 L6.25,7.90606622 L6.25,11.8454915 L9.75,13.5954915 L9.75,7.90606622 L12.9490579,4.25 L3.05094206,4.25 Z M4.75,8.4696689 L1.55927913,4.82313076 C0.852079088,4.01490214 1.42605149,2.75 2.5,2.75 L13.5,2.75 C14.5739485,2.75 15.1479209,4.01490214 14.4407209,4.82313076 L11.25,8.4696689 L11.25,14 C11.25,14.9292275 10.2721094,15.5335972 9.44098301,15.118034 L5.44098301,13.118034 C5.01750297,12.906294 4.75,12.4734651 4.75,12 L4.75,8.4696689 Z"></path>
+        </g>
+    </g>
+</svg>

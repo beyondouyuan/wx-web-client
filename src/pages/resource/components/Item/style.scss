@@ -1,0 +1,44 @@
+.resource-item-container {
+    width: 100%;
+
+    .resource-item {
+        width: 100%;
+        display: flex;
+        padding: .2rem 0;
+        box-sizing: border-box;
+        background-color: #ffffff;
+
+        .resource-item-image {
+            width: .4rem;
+            height: .4rem;
+            background: url('../../assets/images/tips.png') center center no-repeat;
+            background-size: cover;
+            border-radius: .08rem;
+            margin-right: .08rem;
+            overflow: hidden;
+        }
+
+        .resource-item-main {
+            flex: 1;
+            height: .8rem;
+            overflow-y: hidden;
+
+            .title {
+                font-size: .14rem;
+            }
+
+            .desc {
+                margin-top: .1rem;
+                font-size: .12rem;
+                color: #999999;
+                font-family: Alibaba PuHuiTi;
+                line-height: .16rem;
+                color: #8C8C8C;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 2;
+                overflow: hidden;
+            }
+        }
+    }
+}

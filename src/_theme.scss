@@ -1,0 +1,56 @@
+// -webkit-overflow-scrolling: touch;
+/**
+ * 层级
+ */
+$z-index-nav-bar: 9000;
+$z-index-component-toast: 9700;
+$z-index-component-drawer: 9400;
+$z-index-component-service-shopping-cart: 7000;
+
+/**
+ * 导航条
+ */
+$nav-bar-height: 48px;
+$nav-bar-bg-color-light: #ffffff;
+
+/**
+ * 线条（分割线）
+ */
+$line-color: #f0f0f0;
+
+/**
+ * body
+ */
+$body-bg-color: #f5f5f5;
+
+/**
+ * 文本
+ */
+// 颜色
+$text-color-main: #282828;
+$text-color-secondary: #848484;
+$text-color-disable: #cccccc;
+$text-color-active: #4e7cdd;
+$text-color-money: #f0240e;
+
+// 字体
+$font-family: -apple-system, Helvetica Neue, Helvetica, Roboto, Hiragino Sans GB, arial,
+  sans-serif;
+
+/**
+ * 间距
+ */
+$space-xs: 5px;
+$space-sm: 10px;
+$space-md: 15px;
+$space-lg: 20px;
+$space-xl: 25px;
+
+/**
+ * 间距
+ */
+$border-radius-xs: 4px;
+$border-radius-sm: 8px;
+$border-radius-md: 12px;
+$border-radius-lg: 16px;
+$border-radius-xl: 20px;

@@ -1,0 +1,17 @@
+.group-card-container {
+    width: 90%;
+    margin: 0 auto;
+    &:not(:first-child){
+        margin-top: .3rem;
+    }
+    .group-card {
+        width: 100%;
+        height: 4rem;
+        display: flex;
+        padding: .2rem .1rem;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        border: 1px solid #cccccc;
+        border-radius: .2rem;
+    }
+}

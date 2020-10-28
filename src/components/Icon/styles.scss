@@ -1,0 +1,11 @@
+.component-icon {
+  display: inline-block;
+  line-height: 0;
+  vertical-align: middle;
+
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+}

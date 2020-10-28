@@ -1,0 +1,151 @@
+.easy-toast-container {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1004;
+    display: flex;
+    flex-direction: column;
+
+    .toast-mask {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .toast-notice {
+        max-width: 4.8rem;
+        max-height: 4.8rem;
+        border-radius: .08rem;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        background: rgba(65, 72, 93, 0.8);
+
+        &-icon {
+            min-width: 2rem;
+            min-height: 2rem;
+            padding: .36rem .18rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        &-text {
+            text-align: center;
+            padding: 0.2rem 0.4rem;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .toast-text {
+            text-align: center;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            line-height: 1.2; // 单行只需要正常行高
+
+            &-line-clamp {
+                line-height: 1.5;
+            }
+        }
+
+
+        .toast-icon {
+            width: .8rem;
+            height: .8rem;
+            font-size: .8rem;
+            margin-bottom: .18rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            &-loading {
+                -webkit-animation: loading 1s steps(12, end) infinite;
+                animation: loading 1s steps(12, end) infinite;
+                // background: url('~@/image/zzc_loading.gif') no-repeat;
+                // background-size: 100%;
+            }
+
+            // &-success {
+            //     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAM1BMVEUAAAD///////////////////////////////////////////////////////////////+3leKCAAAAEHRSTlMA8DAQ0GBP4LCggMBwIJBAIttdjAAAAINJREFUOMvdkUsOwyAMBbH5hUCauf9pK1SlohF438x2LPn52f09+8vUfiNb/gighj8FouEjYCUoQDXiBSD7pdcMiK7XC9wCFmlDO3T20Scgx287ne13pwDU89NOJ3g3maCmJDANqIGRtLj8oi1ed1GMdmcB7wXIYX8QdQZJiM5Em3smbyVICDCOrCqSAAAAAElFTkSuQmCC") no-repeat;
+            //     background-size: 100%;
+            // }
+
+            // &-error {
+            //     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAAMFBMVEUAAAD///////////////////////////////////////////////////////////87TQQwAAAAD3RSTlMA0BDAMODwUKBgsCCAQJClzVPvAAAA0UlEQVQoz2MgErAclv9o44Dgc8b/B4KvBTA+t/3XdgeWivjPG6ACbl8ngNXlp0AN+L8IwtD6DzFm2w+Y3v5sMGW/ACbA9Rms9ZsCTIApH2QR608GhoUKQJ4xA8P8AKCAP5CwF2JgUPwIlPwCFDj/AMRRYJIHCnL8AZkJ1AfkAcUYGNhBpso7MICUgBQw8H4EEv/B5ssDFYA4mAKYWjANfd+Aai3CYZ9BDoM63RDkdEGQ0zE9h+l9zADCDEIGt2/wQEZEwwVepGhgYEdEFGZUEgYAW05XI3jSsVwAAAAASUVORK5CYII=") no-repeat;
+            //     background-size: 100%;
+            // }
+
+            // &-info {
+            //     background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgBAMAAACBVGfHAAAALVBMVEUAAAD///////////////////////////////////////////////////////+hSKubAAAADnRSTlMA4CCAwKBAMJBg8NAQUNhWlbcAAAC+SURBVCjPYyASsLfse+1cgOBzyr0DgocXYHwmv4dtCkwZck8UoAJZDydA1C2H8NnexUAYR99BjNF6CtMbtwhM+QUACUUhIMH6BKz14QEgafcYSPDIgSxifMkAE2CYJwAk6gQQAozPgURfA0KAA0T6JSAE2ECm7lNACDC9BhLvGGACIA6GAFyLohBEC9xQqLeeQKwFA4i1EIfBAeNzuNMVhSBOx/AcpvcxAwgzCDEDGTMaGHhhEYWIShN4VBIGAPvRT5YzufhUAAAAAElFTkSuQmCC") no-repeat;
+            //     background-size: 100%;
+            // }
+        }
+    }
+
+
+}
+
+
+.toast-fade-enter {
+    &.easy-toast-animation {
+        opacity: 0;
+    }
+}
+
+.toast-fade-enter-active {
+    transition: all 500ms;
+
+    &.easy-toast-animation {
+        opacity: 1;
+    }
+}
+
+.toast-fade-exit {
+    &.easy-toast-animation {
+        opacity: 1;
+    }
+}
+
+.toast-fade-exit-active {
+    transition: all 500ms;
+    &.easy-toast-animation {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes loading {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
+
+@keyframes loading {
+    0% {
+        -webkit-transform: rotate3d(0, 0, 1, 0deg);
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate3d(0, 0, 1, 360deg);
+        transform: rotate3d(0, 0, 1, 360deg);
+    }
+}
