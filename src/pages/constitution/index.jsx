@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Icon from '@components/Icon';
+import Layout from '@Layout';
 
 import './style.scss';
 
 class Constitution extends Component {
     render() {
         return(
-            <div>
+            <Layout view='constitution'>
                 章程
-            </div>
+            </Layout>
         )
     }
 }

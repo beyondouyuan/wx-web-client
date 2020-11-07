@@ -3,7 +3,6 @@ const fs = require('fs');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); // 抽离css文件
 const SvgSpriteLoader = require('svg-sprite-loader/plugin');
-const loader = require('sass-loader');
 
 const REG_SPRITE_SVG = /__sprite$/;
 
@@ -40,13 +39,17 @@ module.exports = {
         app: './src/app.jsx',
     },
     output: {
-        filename: '[name].[hash].js',
+        filename: '[name]_[hash].js',
         path: path.resolve(__dirname, 'dist') // 打包输出路径
     },
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'), // 根目录入口
+            '@Layout': path.resolve(__dirname, 'src/Layout'), // 公共组件入
             '@components': path.resolve(__dirname, 'src/components'), // 公共组件入
+            '@service': path.resolve(__dirname, 'src/service'), // api模块入口
+            '@utils': path.resolve(__dirname, 'src/utils'), // api模块入口
+            '@helper': path.resolve(__dirname, 'src/helper'), // api模块入口
         },
         extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
     },
@@ -71,29 +74,7 @@ module.exports = {
                             name: '[name][hash:7].[ext]',
                             outputPath: 'assets/images/'
                         }
-                    },
-                    // {
-                    //     loader: 'image-webpack-loader',
-                    //     options: {
-                    //         mozjpeg: {
-                    //             progressive: true,
-                    //             quality: 65
-                    //         },
-                    //         optipng: {
-                    //             enabled: false,
-                    //         },
-                    //         pngquant: {
-                    //             quality: '65-90',
-                    //             speed: 4
-                    //         },
-                    //         gifsicle: {
-                    //             interlaced: false,
-                    //         },
-                    //         WebP: {
-                    //             quality: 75
-                    //         }
-                    //     }
-                    // }
+                    }
                 ],
                 // 不处理icon下的svg
                 exclude: path.resolve(__dirname, 'src/components/Icon/svg'),

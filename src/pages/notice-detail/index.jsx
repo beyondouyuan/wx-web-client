@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Icon from '@components/Icon';
-
+import Layout from '@Layout';
 import './style.scss';
 
 class NoticeDetail extends Component {
@@ -9,9 +8,9 @@ class NoticeDetail extends Component {
     }
     render() {
         return(
-            <div>
-                公示详情{this.props.match.params.id}
-            </div>
+            <Layout>
+                <div>公示详情{this.props.match.params.id}</div>
+            </Layout>
         )
     }
 }

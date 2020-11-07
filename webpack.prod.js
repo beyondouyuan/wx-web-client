@@ -5,7 +5,7 @@ const base = require('./webpack.base');
 
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // 不支持ES6语法，神奇哦，使用terser-webpack-plugin代替
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+// const ManifestPlugin = require('webpack-manifest-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -18,7 +18,7 @@ module.exports = merge(base, {
     // devtool: 'isource-map',
     plugins: [
         new CleanWebpackPlugin(), // 无需指定目录，会自动找到配置的输出目录进行清除
-        new ManifestPlugin(), // 输出打包文件清单
+        // new ManifestPlugin(), // 输出打包文件清单
         new OptimizeCSSAssetsPlugin({
 
         }),
@@ -39,7 +39,8 @@ module.exports = merge(base, {
         // }),
         // 输出环境变量
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
+            'process.env.NODE_ENV': JSON.stringify('production'),
+            'baseAPI': JSON.stringify('http://120.236.164.87:8889')
         }),
         // 将build文件夹中的文件copy只打包目录dist
         new CopyWebpackPlugin({

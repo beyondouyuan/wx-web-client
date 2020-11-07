@@ -11,9 +11,13 @@
         .news-item-image {
             width: .8rem;
             height: .8rem;
-            background-color: yellowgreen;
+            // background-color: yellowgreen;
             border-radius: .1rem;
             margin-right: .08rem;
+
+            .news-images {
+                width: 100%;
+            }
         }
 
         .news-item-main {

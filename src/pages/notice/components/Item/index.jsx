@@ -8,7 +8,7 @@ function Item(props) {
         <div className='notice-item-container'>
             <div className='notice-item' onClick={
                 () => {
-                    props.history.push(`/notice/${props.id}`)
+                    props.history.push(`/notice-detail?id=${props.id}`)
                 }
             }>
                 <div className='notice-item-image'></div>

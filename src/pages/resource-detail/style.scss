@@ -1,0 +1,21 @@
+.resource-detail-conntainer {
+    width: 100%;
+    height: 100vh;
+    padding: .1rem;
+    box-sizing: border-box;
+
+    .contennt-title {
+        font-size: .18rem;
+        color: #333333;
+        margin-bottom: .1rem;
+    }
+
+    .contennt-main {
+        font-size: .14rem;
+        text-indent: 2em;
+        text-align: justify;
+        color: #999999;
+        line-height: 1.5;
+        margin-bottom: .1rem;
+    }
+}

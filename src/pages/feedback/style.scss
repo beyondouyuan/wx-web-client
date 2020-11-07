@@ -1,19 +1,19 @@
-.join-container {
+.feedback-container {
     width: 100%;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box;
-    background: url('./assets/images/join_header.jpg') 0 0 no-repeat;
+    background: url('./assets/images/feedback_header.jpg') 0 0 no-repeat;
     background-size: 100% 1.96rem;
 
-    .join-wrapper {
+    .feedback-wrapper {
         width: 100%;
         margin-top: 1.96rem;
         padding-bottom: .2rem;
         background-color: #0084ff;
     }
 
-    .join-content {
+    .feedback-content {
         width: 3.38rem;
         margin: 0 auto;
         background-color: #ffffff;
@@ -21,7 +21,7 @@
         padding: .06rem;
         box-sizing: border-box;
 
-        .join-main {
+        .feedback-main {
             border: 1px solid #D4E8FF;
             border-radius: .1rem;
         }
@@ -35,7 +35,7 @@
         justify-content: center;
     }
 
-    .join-form {
+    .feedback-form {
         width: 100%;
         height: 100%;
         margin: 0 auto;
@@ -47,16 +47,16 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: .1rem;
-            position: relative;
 
             .label-item {
-                width: .9rem;
+                width: .6rem;
                 font-size: .12rem;
                 padding-left: .16rem;
                 box-sizing: border-box;
             }
 
             .input-item {
+                resize: none;
                 flex: 1;
                 height: .44rem;
                 line-height: .44rem;
@@ -70,31 +70,21 @@
                     color: #C4C4C4;
                 }
             }
-        }
 
-        .auth-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: absolute;
-            top: 50%;
-            right: .1rem;
-            transform: translateY(-50%);
-
-            .auth-btn {
-                border: none;
-                background: none;
-                height: .20rem;
+            .text-area {
+                flex: 1;
                 font-size: .14rem;
-                font-family: Alibaba PuHuiTi;
-                font-weight: 500;
-                line-height: .18rem;
-                color: #278CFF;
-                opacity: 1;
-
-                &[disabled] {
+                padding: .14rem;
+                box-sizing: border-box;
+                border: 0;
+                border-radius: .08rem;
+                background-color: rgba(241, 241, 241, .98);
+                &::-webkit-input-placeholder {
                     color: #C4C4C4;
                 }
+            }
+            .upload-item {
+                flex: 1;
             }
         }
     }
@@ -114,20 +104,6 @@
             font-family: Alibaba PuHuiTi;
             font-weight: bold;
             background-color: #0084ff;
-        }
-    }
-
-    .select-box {
-        background-color: #ffffff;
-        background-image: none !important;
-        filter: none !important;
-        border: 1px solid #e5e5e5;
-        outline: none;
-        font-size: .14rem;
-        width: 100% !important;
-
-        .item {
-            font-size: .12rem !important;
         }
     }
 }

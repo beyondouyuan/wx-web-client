@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Layout from '@Layout';
 import Item from './components/Item';
 import NoData from '../../components/NoData';
 import throttle from '../../utils/throttle';
@@ -116,13 +117,17 @@ class Notice extends Component {
     }
     renderNoData() {
         return (
-            <div className='notice-container'>
-                <div className='notice-content'>
-                    <div className='notice-main'>
-                        <NoData text={'暂无公示内容'} />
+
+            <Layout view='notice'>
+                <div className='notice-container'>
+                    <div className='notice-content'>
+                        <div className='notice-main'>
+                            <NoData text={'暂无公示内容'} />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Layout>
+
         )
     }
     render() {
@@ -132,21 +137,24 @@ class Notice extends Component {
             return this.renderNoData()
         }
         return (
-            <div className='notice-container'>
-                <div className='notice-content'>
-                    <div className='notice-main'>
-                        {
-                            notice.map((item) => {
-                                return <Item key={item.id} {...item} />
-                            })
-                        }
-                        {noMore && (
-                            <div className='no-more'>暂无更多数据</div>
-                        )
-                        }
+            <Layout>
+                <div className='notice-container'>
+                    <div className='notice-content'>
+                        <div className='notice-main'>
+                            {
+                                notice.map((item) => {
+                                    return <Item key={item.id} {...item} />
+                                })
+                            }
+                            {noMore && (
+                                <div className='no-more'>暂无更多数据</div>
+                            )
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Layout>
+
         )
     }
 }

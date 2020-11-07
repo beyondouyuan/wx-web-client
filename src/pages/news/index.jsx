@@ -1,56 +1,31 @@
 import React, { Component } from 'react';
+import Layout from '@Layout';
 import Item from './components/Item';
-import NoData from '../../components/NoData';
-import throttle from '../../utils/throttle';
-import { getScrollHeight, getScrollTop, getWindowHeight } from '../../utils/scroll'
+import NoData from '@components/NoData';
+import EasyToast from '../../components/EasyToast';
+import throttle from '@utils/throttle';
+import { getScrollHeight, getScrollTop, getWindowHeight } from '@utils/scroll'
 import './style.scss';
-
-const news = [{
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀，2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 1
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 2
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 3
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 4
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 5
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 6
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-    id: 7
-}]
+import { requestNewsList } from '../../service/news'
 
 class News extends Component {
     constructor() {
         super(...arguments)
         this.state = {
             currentPage: 1,
+            totalPage: 1,
+            pageSize: 10,
             loading: false,
-            news: news,
-            curId: news.length,
+            news: [],
             noMore: false,
-            noData: false
+            noData: true
         }
         this.handleScroll = this.handleScroll.bind(this)
         this.handleThrottleScroll = this.handleThrottleScroll.bind(this)
         this.fetchData = this.fetchData.bind(this)
     }
     componentDidMount() {
+        this.fetchData()
         window.addEventListener('scroll', this.handleThrottleScroll)
     }
     componentWillUnmount() {
@@ -65,70 +40,73 @@ class News extends Component {
     }
     handleScroll(e) {
         if (getScrollTop() + getWindowHeight() + 50 >= getScrollHeight()) {
-            this.fetchData()
-        }
-    }
-    fetchData() {
-        if (this.state.curId >= 30) {
-            if (!this.state.noMore) {
-                this.setState({
-                    noMore: true
-                })
-            }
-            return;
-        }
-        const arr = []
-        for (let i = 0; i < 10; i++) {
-            let { curId } = this.state;
-            const f = curId;
-            arr.push(
-                {
-                    title: '我校隆重举行秋季学期开学典礼',
-                    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-                    id: f + 1
-                }
-            )
-            this.setState({
-                curId: f + 1
+            if(this.state.currentPage + 1 > this.state.totalPage) return
+            this.setState(prevState => ({
+                currentPage: prevState.currentPage + 1
+            }), () => {
+                this.fetchData()
             })
         }
-        this.setState(prevState => ({
-            news: prevState.news.concat(arr)
-        }))
+    }
+    async fetchData() {
+        try {
+            const result = await requestNewsList({
+                page: this.state.currentPage,
+                pagesize: this.state.pageSize
+            });
+            if (result.code === 'C0000') {
+                this.setState(prevState => ({
+                    news: prevState.news.concat(result?.data?.listJson?.list || []),
+                    noData: result?.data?.listJson?.list?.length ? false : true,
+                    totalPage: result.data.totalPage
+                }))
+            } else {
+                EasyToast.info('获取数据失败')
+            }
+        } catch (error) {
+            EasyToast.info(`网络错误`)
+        }
+
     }
     renderNoData() {
         return (
-            <div className='news-container'>
-                <div className='news-content'>
-                    <div className='news-main'>
-                        <NoData text={'暂无新闻哪哦那个'} />
+            <Layout view='news'>
+                <div className='news-container'>
+                    <div className='news-content'>
+                        <div className='news-main'>
+                            <NoData text={'暂无新闻哪哦那个'} />
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Layout>
+
         )
     }
     render() {
-        const { news, noMore, noData } = this.state;
-        if(noData) {
+        const { news, noMore, noData } = this.state
+        if (noData || !news.length) {
             return this.renderNoData()
         }
         return (
-            <div className='news-container'>
-                <div className='news-content'>
-                    <div className='news-main'>
-                        {
-                            news.map((item) => {
-                                return <Item key={item.id} {...item} />
-                            })
-                        }
-                        {
-                            noMore && (
-                                <div className='no-more'>暂无更多数据</div>
-                            )
-                        }
+            <Layout>
+                <div className='news-container'>
+                    <div className='news-content'>
+                        <div className='news-main'>
+                            {
+                                news.map((item) => {
+                                    return <Item key={item.newId} {...item} />
+                                })
+                            }
+                            {
+                                noMore && (
+                                    <div className='no-more'>暂无更多数据</div>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            </Layout>
+
         )
     }
 }

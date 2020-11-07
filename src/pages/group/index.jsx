@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import GroupCard from './components/Card';
-
+import Layout from '@Layout';
+import contact from '../../assets/images/contact.png'
 import './style.scss';
 
 const group = [{
@@ -23,14 +23,19 @@ const group = [{
 
 class Group extends Component {
     render() {
-        return(
-            <div className='group-container'>
-                {
+        return (
+            <Layout view='group'>
+                <div className='group-container'>
+                    {/* {
                     group.map((item) => {
                         return <GroupCard key={item.id} {...item} />
                     })
-                }
-            </div>
+                } */}
+                    <div className='group-content'>
+                        <img className='group-images' src={contact} />
+                    </div>
+                </div>
+            </Layout>
         )
     }
 }

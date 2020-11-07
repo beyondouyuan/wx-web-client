@@ -1,5 +1,5 @@
 {
-  "name": "webpack-config-app",
+  "name": "wx-web-client",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -42,16 +42,24 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",
-    "webpack-manifest-plugin": "^2.2.0",
     "webpack-merge": "^5.1.4"
   },
   "dependencies": {
+    "assets-webpack-plugin": "^6.0.3",
+    "axios": "^0.21.0",
+    "classnames": "^2.2.6",
     "history": "^5.0.0",
     "image-webpack-loader": "^7.0.1",
+    "ip": "^1.1.5",
     "lodash": "^4.17.20",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.13.1",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "react-transition-group": "^4.4.1",
+    "url": "^0.11.0",
+    "webpack-assets-manifest": "^3.1.1"
   }
 }

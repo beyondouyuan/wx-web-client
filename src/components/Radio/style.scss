@@ -1,0 +1,18 @@
+.radio-container {
+    display: flex;
+    align-items: center;
+
+    .normal-radio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 14px;
+        &:not(:first-child) {
+            margin-left: 8px;
+        }
+        .radio-input {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
