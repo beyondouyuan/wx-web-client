@@ -56,7 +56,7 @@ class Join extends Component {
         this.state = {
             smsCodeed: true,
             authText: '获取验证码',
-            selectedValue: '1',
+            realSex: '1',
             params: {},
             industryType: 'HULIANWANG_FINACE',
             userInfo: {}
@@ -83,7 +83,8 @@ class Join extends Component {
             },
             params: {
                 ...params
-            }
+            },
+            realSex: userInfo.realSex
         })
     }
 
@@ -119,7 +120,7 @@ class Join extends Component {
         try {
             const result = await requestPostJoin({
                 ...this.state.params,
-                realSex: this.state.selectedValue,
+                realSex: this.state.realSex,
                 industryType: this.state.industryType
             })
             if (result.code === 'C0000') {
@@ -173,7 +174,7 @@ class Join extends Component {
         }
     }
     handleChangeRadio(v) {
-        this.setState({ selectedValue: v });
+        this.setState({ realSex: v });
     }
     render() {
         const { smsCodeed, authText, userInfo } = this.state
@@ -193,7 +194,7 @@ class Join extends Component {
                                     </div>
                                     <div className='form-item'>
                                         <span className='label-item'>性别</span>
-                                        <RadioGroup name="platform" selectedValue={userInfo.userName ? userInfo.userName : this.state.selectedValue} onChange={(event) => { this.handleChangeRadio(event) }}>
+                                        <RadioGroup name="realSex" selectedValue={this.state.realSex} onChange={(event) => { this.handleChangeRadio(event) }}>
                                             <Radio value="1">男</Radio>
                                             <Radio value="0">女</Radio>
                                         </RadioGroup>
