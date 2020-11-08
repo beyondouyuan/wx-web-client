@@ -45,12 +45,12 @@ class FeedBack extends Component {
                     <div className='feedback-wrapper'>
                         <div className='feedback-content'>
                             <div className='feedback-main'>
-                                <div className='header'>反馈信息</div>
+                                {/* <div className='header'>反馈信息</div> */}
                                 <div className='feedback-form'>
                                     <div className='form-item'>
-                                        <span className='label-item'>内容</span>
+                                        <span className='label-item'>意见反馈：</span>
                                         <textarea
-                                            placeholder="反馈内容"
+                                            placeholder="请输入反馈内容"
                                             className='text-area'
                                             rows="10"
                                             onChange={(e) => { this.handleGetContent(e) }}

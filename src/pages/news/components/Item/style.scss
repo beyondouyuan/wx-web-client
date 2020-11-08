@@ -7,16 +7,22 @@
         padding: .2rem 0;
         box-sizing: border-box;
         background-color: #ffffff;
-
+        border-bottom: 1px solid #e8e8e8;
         .news-item-image {
             width: .8rem;
             height: .8rem;
+            // border-radius: .02rem;
             // background-color: yellowgreen;
-            border-radius: .1rem;
+            border-radius: .04rem;
+            overflow: hidden;
             margin-right: .08rem;
 
             .news-images {
+
+                font-size: .12rem;
+                display: block;
                 width: 100%;
+                border-radius: .04rem;
             }
         }
 
@@ -26,7 +32,9 @@
             overflow-y: hidden;
 
             .title {
-                font-size: .14rem;
+                line-height: 1.2;
+                font-size: .16rem;
+                font-weight: 500;
             }
 
             .desc {
@@ -34,7 +42,7 @@
                 font-size: .12rem;
                 color: #999999;
                 font-family: Alibaba PuHuiTi;
-                line-height: .16rem;
+                line-height: 1.8;
                 color: #8C8C8C;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;

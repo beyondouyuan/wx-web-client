@@ -9,7 +9,7 @@
         align-items: center;
         box-sizing: border-box;
         background-color: #ffffff;
-        border-bottom: 1px solid #D5D5D5;
+        border-bottom: 1px solid #e8e8e8;
         .notice-item-image {
             width: .06rem;
             height: .06rem;
@@ -24,7 +24,9 @@
             overflow-y: hidden;
 
             .title {
-                font-size: .14rem;
+                line-height: 1.2;
+                font-size: .16rem;
+                font-weight: 500;
             }
 
             .desc {
@@ -32,7 +34,7 @@
                 font-size: .12rem;
                 color: #999999;
                 font-family: Alibaba PuHuiTi;
-                line-height: .16rem;
+                line-height: 1.8;
                 color: #8C8C8C;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;

@@ -69,7 +69,7 @@ class ResourceDetail extends Component {
                         detail?.picPathList.map((item, index) => {
                             return (
                                 <div key={`${index}-key`} className='image-item'>
-                                    <img src={item.picPath} />
+                                    <img className='image' src={item.picPath} alt='资源图片' />
                                 </div>
                             )
                         })

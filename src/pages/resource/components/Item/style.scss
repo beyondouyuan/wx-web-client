@@ -1,6 +1,6 @@
 .resource-item-container {
     width: 100%;
-
+    border-bottom: 1px solid #e8e8e8;
     .resource-item {
         width: 100%;
         display: flex;
@@ -20,11 +20,13 @@
 
         .resource-item-main {
             flex: 1;
-            height: .8rem;
+            // height: .8rem;
             overflow-y: hidden;
 
             .title {
-                font-size: .14rem;
+                line-height: 1.2;
+                font-size: .16rem;
+                font-weight: 500;
             }
 
             .desc {
@@ -32,7 +34,8 @@
                 font-size: .12rem;
                 color: #999999;
                 font-family: Alibaba PuHuiTi;
-                line-height: .16rem;
+                // line-height: .16rem;
+                line-height: 1.8;
                 color: #8C8C8C;
                 display: -webkit-box;
                 -webkit-box-orient: vertical;

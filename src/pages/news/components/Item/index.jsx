@@ -15,7 +15,7 @@ function Item(props) {
                 }
             }>
                 <div className='news-item-image'>
-                    <img className='news-images' src={props.firstPicUrl} />
+                    <img className='news-images' src={props.firstPicUrl} alt='新闻图片' />
                 </div>
                 <div className='news-item-main'>
                     <div className='title'>{props?.conTextTitle}</div>

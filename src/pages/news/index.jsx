@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import Layout from '@Layout';
 import Item from './components/Item';
 import NoData from '@components/NoData';
-import EasyToast from '../../components/EasyToast';
+import EasyToast from '@components/EasyToast';
 import throttle from '@utils/throttle';
 import { getScrollHeight, getScrollTop, getWindowHeight } from '@utils/scroll'
 import './style.scss';
-import { requestNewsList } from '../../service/news'
+import { requestNewsList } from '@service/news'
 
 class News extends Component {
     constructor() {

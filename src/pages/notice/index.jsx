@@ -1,56 +1,12 @@
 import React, { Component } from 'react';
 import Layout from '@Layout';
 import Item from './components/Item';
-import NoData from '../../components/NoData';
-import throttle from '../../utils/throttle';
-import { getScrollHeight, getScrollTop, getWindowHeight } from '../../utils/scroll'
+import NoData from '@components/NoData';
+import EasyToast from '@components/EasyToast';
+import throttle from '@utils/throttle';
+import { getScrollHeight, getScrollTop, getWindowHeight } from '@utils/scroll'
 import './style.scss';
-
-const notice = [{
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 1
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 2
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 3
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 4
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 5
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 6
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 7
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 8
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 9
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 10
-}, {
-    title: '我校隆重举行秋季学期开学典礼',
-    desc: '',
-    id: 11
-}]
+import { requestNoticeList } from '@service/common';
 
 class Notice extends Component {
 
@@ -58,9 +14,10 @@ class Notice extends Component {
         super(...arguments)
         this.state = {
             currentPage: 1,
+            totalPage: 1,
+            pageSize: 10,
             loading: false,
-            notice: notice,
-            curId: notice.length,
+            notice: [],
             noMore: false,
             noData: false
         }
@@ -69,6 +26,7 @@ class Notice extends Component {
         this.fetchData = this.fetchData.bind(this)
     }
     componentDidMount() {
+        this.fetchData()
         window.addEventListener('scroll', this.handleThrottleScroll)
     }
     componentWillUnmount() {
@@ -84,36 +42,34 @@ class Notice extends Component {
 
     handleScroll(e) {
         if (getScrollTop() + getWindowHeight() + 50 >= getScrollHeight()) {
-            this.fetchData()
-        }
-    }
-    fetchData() {
-        if (this.state.curId >= 30) {
-            if (!this.state.noMore) {
-                this.setState({
-                    noMore: true
-                })
-            }
-            return;
-        }
-        const arr = []
-        for (let i = 0; i < 10; i++) {
-            let { curId } = this.state;
-            const f = curId;
-            arr.push(
-                {
-                    title: '我校隆重举行秋季学期开学典礼',
-                    desc: '2020年9月1日清晨，阳光明媚，秋高气爽。我校4100多师生相聚在共青湖畔美丽的两中校园怀',
-                    id: f + 1
-                }
-            )
-            this.setState({
-                curId: f + 1
+            // this.fetchData()
+            if(this.state.currentPage + 1 > this.state.totalPage) return
+            this.setState(prevState => ({
+                currentPage: prevState.currentPage + 1
+            }), () => {
+                this.fetchData()
             })
         }
-        this.setState(prevState => ({
-            notice: prevState.notice.concat(arr)
-        }))
+    }
+    async fetchData() {
+        try {
+            const result = await requestNoticeList({
+                page: this.state.currentPage,
+                pagesize: this.state.pageSize
+            });
+            if (result.code === 'C0000') {
+                this.setState(prevState => ({
+                    notice: prevState.notice.concat(result?.data?.listJson || []),
+                    noData: result?.data?.listJson?.length ? false : true,
+                    totalPage: result.data.totalPage
+                }))
+            } else {
+                EasyToast.info('获取数据失败')
+            }
+        } catch (error) {
+            EasyToast.info(`网络错误`)
+        }
+
     }
     renderNoData() {
         return (
@@ -143,7 +99,7 @@ class Notice extends Component {
                         <div className='notice-main'>
                             {
                                 notice.map((item) => {
-                                    return <Item key={item.id} {...item} />
+                                    return <Item key={item.announceId} {...item} />
                                 })
                             }
                             {noMore && (

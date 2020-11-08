@@ -76,9 +76,9 @@
                 font-size: .14rem;
                 padding: .14rem;
                 box-sizing: border-box;
-                border: 0;
+                border: 1px solid #e8e8e8;
                 border-radius: .08rem;
-                background-color: rgba(241, 241, 241, .98);
+                // background-color: rgba(241, 241, 241, .98);
                 &::-webkit-input-placeholder {
                     color: #C4C4C4;
                 }
