@@ -40,7 +40,7 @@ module.exports = merge(base, {
         // 输出环境变量
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production'),
-            'baseAPI': JSON.stringify('http://120.236.164.87:8889')
+            'baseAPI': JSON.stringify('http://wechat.website.891tech.com')
         }),
         // 将build文件夹中的文件copy只打包目录dist
         new CopyWebpackPlugin({

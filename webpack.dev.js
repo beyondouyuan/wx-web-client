@@ -9,7 +9,7 @@ module.exports = merge(base, {
         // 输出环境变量
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('development'),
-            'baseAPI': JSON.stringify('http://192.168.0.109:8889')
+            'baseAPI': JSON.stringify('http://wechat.website.891tech.com')
         })
     ],
     devServer: {
@@ -25,7 +25,7 @@ module.exports = merge(base, {
         hot: true,
         proxy: {
             "/website": {
-              target: 'http://192.168.0.109:8889/website',
+              target: 'http://wechat.website.891tech.com/website',
               pathRewrite: {'^/website' : ''},
               changeOrigin: true
             }
