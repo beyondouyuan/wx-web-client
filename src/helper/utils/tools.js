@@ -89,3 +89,37 @@ export function versionCompare(version, targetVersion, exponent) {
 }
 
 // console.log(versionCompare('1.0.4', '1.0.3', 3))
+
+
+/**
+ * 将数组根据数组对象属性转为二维数组
+ */
+export function arrayTodimension (arr, prop) {
+    const result = Object.values(arr.reduce((res, item) => {
+      res[item[prop]] ? res[item[prop]].push(item) : res[item[prop]] = [item]
+      return res
+    }, {}))
+    return result
+  }
+  
+  /**
+   * 将数组根据数组对象属性转为树形
+   */
+  export function arrayToTree(arr, prop){
+    if (!Array.isArray(arr) || !arr.length) return;
+    let map = {}
+    for (let i = 0; i< arr.length; i++){
+        let temp = arr[i]
+        if (!map[temp[prop]]){
+            map[temp[prop]] = []
+        }
+        map[temp[prop]].push(temp)
+    }
+  
+    let result = []
+    for (let key in map){
+        result.push({ [prop]: key, children: map[key] })
+    }
+  
+    return result;
+  }
